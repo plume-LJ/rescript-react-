@@ -39,6 +39,10 @@ let make = () => {
       <File.component />
       <File.Nested />
       <Test />
+      <AdderButton />
+      <CustomTextInput />
+      <FancyButton />
+      <FancyButtonForward />
     </React.StrictMode>
   </div>
 }
