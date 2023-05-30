@@ -1,7 +1,9 @@
 // src/element-jsx/Greeting.res
-let element = React.string("Hello ReScripters!")
-
 @react.component
-let make = () => {
-  <div> element </div>
+let make = (~name: option<string>=?) => {
+  let greeting = switch name {
+  | Some(name) => "Hello " ++ name ++ "!"
+  | None => "Hello stranger!"
+  }
+  <div> {React.string(greeting)} </div>
 }
