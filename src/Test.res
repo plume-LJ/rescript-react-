@@ -19,23 +19,19 @@ module Blog = {
   let make = (~posts: array<post>) => {
     let sidebar =
       <ul>
-        {
-          Belt.Array.map(posts, (post) => {
-            <li key={post.id}>
-              {React.string(post.title)}
-            </li>
-          })->React.array
-        }
+        {Belt.Array.map(posts, post => {
+          <li key={post.id}> {React.string(post.title)} </li>
+        })->React.array}
       </ul>
 
-    let content = Belt.Array.map(posts, (post) => {
-        <div key={post.id}>
-          <h3>{React.string(post.title)}</h3>
-          <p>{React.string(post.content)}</p>
-        </div>
-    });
-      
-      <div>
+    let content = Belt.Array.map(posts, post => {
+      <div key={post.id}>
+        <h3> {React.string(post.title)} </h3>
+        <p> {React.string(post.content)} </p>
+      </div>
+    })
+
+    <div>
       {sidebar}
       <hr />
       {React.array(content)}
@@ -45,29 +41,34 @@ module Blog = {
 
 let posts = [
   {id: "1", title: "Hello World", content: "Welcome to learning ReScript & React!"},
-  {id: "2", title: "Installation", content: "You can install reason-react from npm."}
+  {id: "2", title: "Installation", content: "You can install reason-react from npm."},
 ]
 
-let blog = <Blog posts/>
+let blog = <Blog posts />
 
 module TT = {
   @react.component
-let make = () => {
-  let todoList = list{
-    {id: "todo1", text: "Todo 3"},
-    {id: "todo2", text: "Todo 4"},
+  let make = () => {
+    let todoList = list{{id: "todo1", text: "Todo 3"}, {id: "todo2", text: "Todo 4"}}
+
+    let items =
+      todoList
+      ->Belt.List.toArray
+      ->Belt.Array.map(todo => {
+        <li key={todo.id}> {React.string(todo.text)} </li>
+      })
+
+    <div> {React.array(items)} </div>
   }
-
-  let items =
-    todoList
-    ->Belt.List.toArray
-    ->Belt.Array.map(todo => {
-      <li key={todo.id}> {React.string(todo.text)} </li>
-    })
-
-  <div> {React.array(items)} </div>
 }
-}
+
+let style =
+  ReactDOM.Style.make(~color="red", ~padding="10px", ())->ReactDOM.Style.unsafeAddProp(
+    "WebkitAnimationName",
+    "moveit",
+  )
+
+// )->ReactDOM.Style.unsafeAddProp("-webkit-animation-name", "moveit")
 
 @react.component
 let make = () => {
@@ -77,6 +78,7 @@ let make = () => {
     {React.array(items1)}
     blog
     <TT />
+    <div style> {React.int(2424)} </div>
   </div>
 }
 

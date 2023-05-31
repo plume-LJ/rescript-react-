@@ -28,12 +28,19 @@
     "rescript": "^10.1.4"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.21.8",
     "@jihchi/vite-plugin-rescript": "^5.3.0",
+    "autoprefixer": "^10.4.14",
+    "cssnano": "^6.0.1",
     "eslint": "^8.41.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
+    "postcss": "^8.4.24",
+    "postcss-import": "^15.1.0",
     "prettier": "^2.8.8",
     "react-styleguidist": "^13.1.1",
+    "sass": "^1.62.1",
+    "tailwindcss": "^3.3.2",
     "vite": "^4.3.9",
     "webpack": "^5.84.1"
   },

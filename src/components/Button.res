@@ -7,6 +7,7 @@ module Label = {
 }
 @react.component
 let make = (~onClick, ~msg, ~children) => {
+  
   <div onClick>
     <Label title={msg} />
     children
