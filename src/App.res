@@ -53,6 +53,7 @@ let make = () => {
         // <StyleButton />
         // <App1 />
         <Counter />
+        // <FriendStatus friendId="2" />
       </React.StrictMode>
     </div>
   </ThemeContext.Provider>
