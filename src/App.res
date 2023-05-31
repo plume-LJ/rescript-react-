@@ -10,25 +10,25 @@ module Link = Components.Link
 module ThemeContext = Theme.ThemeContext
 @react.component
 let make = () => {
-  let visitorCount = 5
+  // let visitorCount = 5
   // let name = Some("Andrea")
   // let input = <input type_="text" />
   <ThemeContext.Provider value=ThemeContext.Dark>
     <div>
       <React.StrictMode>
         // <Greeting />
-        <Article title="ReScripters" visitorCount>
-          {React.string("dom")}
-          {React.cloneElement(
-            <input type_="text" />,
-            {"className": "world root", "aria-label": "test", "data-name": "some name"},
-          )}
-          {ReactDOM.createDOMElementVariadic(
-            "div",
-            ~props={className: "card", ariaLabel: "test", data: "2"},
-            [],
-          )}
-        </Article>
+        // <Article title="ReScripters" visitorCount>
+        //   {React.string("dom")}
+        //   {React.cloneElement(
+        //     <input type_="text" />,
+        //     {"className": "world root", "aria-label": "test", "data-name": "some name"},
+        //   )}
+        //   {ReactDOM.createDOMElementVariadic(
+        //     "div",
+        //     ~props={className: "card", ariaLabel: "test", data: "2"},
+        //     [],
+        //   )}
+        // </Article>
         // <MyList>
         //   <li> {React.string("Item 1")} </li>
         //   <li> {React.string("Item 2")} </li>
@@ -54,6 +54,8 @@ let make = () => {
         // <App1 />
         <Counter />
         // <FriendStatus friendId="2" />
+        <TextInput />
+        <ThemeContainer content={React.string("hello plume!")} />
       </React.StrictMode>
     </div>
   </ThemeContext.Provider>
