@@ -1,20 +1,27 @@
 // FancyButton.res
 
+@send external focus: Dom.element => unit = "focus"
+@send external blur: Dom.element => unit = "blur"
+
 module FancyInput = {
   @react.component
-  let make = React.forwardRef((~className=?, ~children, ref) =>
+  let make = React.forwardRef((~className=?, ~children, ref) => {
+    let input = React.useRef(Js.Nullable.null)
+    let blur = () => {
+      input.current->Js.Nullable.toOption->Belt.Option.forEach(input => input->blur)
+    }
+    let focus = () => {
+      input.current->Js.Nullable.toOption->Belt.Option.forEach(input => input->focus)
+    }
+
+    React.useImperativeHandle0(ref, () => {"focus": focus, "blur": blur})
+
     <div>
-      <input
-        type_="text"
-        ?className
-        ref=?{Js.Nullable.toOption(ref)->Belt.Option.map(ReactDOM.Ref.domRef)}
-      />
+      <input type_="text" ?className ref={ReactDOM.Ref.domRef(input)} />
       children
     </div>
-  )
+  })
 }
-
-@send external focus: Dom.element => unit = "focus"
 
 @react.component
 let make = () => {
