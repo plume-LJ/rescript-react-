@@ -16,7 +16,7 @@ let make = () => {
   <ThemeContext.Provider value=ThemeContext.Dark>
     <div>
       <React.StrictMode>
-        <Greeting />
+        // <Greeting />
         <Article title="ReScripters" visitorCount>
           {React.string("dom")}
           {React.cloneElement(
@@ -29,28 +29,30 @@ let make = () => {
             [],
           )}
         </Article>
-        <MyList>
-          <li> {React.string("Item 1")} </li>
-          <li> {React.string("Item 2")} </li>
-        </MyList>
-        <StringChildren> "sdsd" </StringChildren>
-        <OptionalChildren> {React.string("sdsd")} </OptionalChildren>
-        <OptionalChildren />
-        // <NoChildren> "sdsd" </NoChildren>
-        <NoChildren />
-        <Button onClick={e => {Js.log(e)}} msg="sdsd"> {React.int(123)} </Button>
-        <Link href="/docs"> {React.string("Docs")} </Link>
-        <File.component />
-        <File.Nested />
-        <Test />
-        <AdderButton />
-        <CustomTextInput />
-        <FancyButton />
-        <FancyButtonForward />
-        <div  className={`border-1 border-black `} style={ReactDOM.Style.make(~color="#444444", ~fontSize="68px", ())} >
-          {React.string("s")}
-        </div>
-        <StyleButton />
+        // <MyList>
+        //   <li> {React.string("Item 1")} </li>
+        //   <li> {React.string("Item 2")} </li>
+        // </MyList>
+        // <StringChildren> "sdsd" </StringChildren>
+        // <OptionalChildren> {React.string("sdsd")} </OptionalChildren>
+        // <OptionalChildren />
+        // // <NoChildren> "sdsd" </NoChildren>
+        // <NoChildren />
+        // <Button onClick={e => {Js.log(e)}} msg="sdsd"> {React.int(123)} </Button>
+        // <Link href="/docs"> {React.string("Docs")} </Link>
+        // <File.component />
+        // <File.Nested />
+        // <Test />
+        // <AdderButton />
+        // <CustomTextInput />
+        // <FancyButton />
+        // <FancyButtonForward />
+        // <div  className={`border-1 border-black `} style={ReactDOM.Style.make(~color="#444444", ~fontSize="68px", ())} >
+        //   {React.string("s")}
+        // </div>
+        // <StyleButton />
+        // <App1 />
+        <Counter />
       </React.StrictMode>
     </div>
   </ThemeContext.Provider>
