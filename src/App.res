@@ -53,9 +53,11 @@ let make = () => {
         // <StyleButton />
         // <App1 />
         <Counter />
+        <Counter1 />
         // <FriendStatus friendId="2" />
         <TextInput />
-        <ThemeContainer content={React.string("hello plume!")} />
+        // <ThemeContainer content={React.string("hello plume!")} />
+        <TodoApp />
       </React.StrictMode>
     </div>
   </ThemeContext.Provider>
