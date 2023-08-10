@@ -51,7 +51,7 @@ let make = () => {
   )
 
   let todos = Belt.Array.map(state.todos, todo =>
-    <li>
+    <li key={Belt.Int.toString(todo.id)}>
       {React.string(todo.content)}
       <button onClick={_ => dispatch(RemoveTodo(todo.id))}>
         {React.string("Remove")}

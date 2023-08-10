@@ -1,38 +1,31 @@
 // Counter.res
-module Document = {
-  type t
-  @val external document: t = "document"
-  @set external setTitle: (t, string) => unit = "title"
+
+type action = Inc | Dec | Reset(int)
+type state = {count: int}
+
+let init = initialCount => {
+  {count: initialCount}
+}
+
+let reducer = (state, action) => {
+  switch action {
+  | Inc => {count: state.count + 1}
+  | Dec => {count: state.count - 1}
+  | Reset(count) => init(count)
+  }
 }
 
 @react.component
-let make = () => {
-  let (count, setCount) = React.useState(_ => 0)
-  let (state, setState) = React.Uncurried.useState(_ => 0)
+let make = (~initialCount: int) => {
+  let (state, dispatch) = React.useReducerWithMapState(
+    reducer,
+    initialCount,
+    init,
+  )
 
-  // React.useEffect(() => {
-  //   open Document
-  //   document->setTitle(`You clicked ${Belt.Int.toString(count)} times!`)
-  //   None
-  // })
-
-  React.useEffect1(() => {
-    open Document
-    document->setTitle(`You clicked ${Belt.Int.toString(count)} times!`)
-    None
-  }, [count])
-
-  let onClick = _evt => {
-    setCount(prev => prev + 1)
-    setState(.prev => prev + 1)
-  }
-
-  let msg = "You clicked" ++ Belt.Int.toString(count) ++ "times"
-  let msg1 = "You clicked" ++ Belt.Int.toString(state) ++ "times"
-
-  <div>
-    <p> {React.string(msg)} </p>
-    <p> {React.string(msg1)} </p>
-    <button onClick> {React.string("Click me")} </button>
-  </div>
+  <>
+    {React.string("Count:" ++ Belt.Int.toString(state.count))}
+    <button onClick={_ => dispatch(Dec)}> {React.string("-")} </button>
+    <button onClick={_ => dispatch(Inc)}> {React.string("+")} </button>
+  </>
 }

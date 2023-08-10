@@ -13,6 +13,19 @@ let make = () => {
   // let visitorCount = 5
   // let name = Some("Andrea")
   // let input = <input type_="text" />
+  Js.log(TestFresh.result3)
+  Js.log(Type.c)
+  Js.log(ExtenalTTT.loc)
+  Js.log(DrawGame.draw)
+  // Js.log(Multiple.c)
+  Js.log(Direction.c)
+  
+  // let a = [1,2,3]
+  // let b = Js.Array2.unsafe_get(a, 5)
+  // Js.log(b)
+  Js.log(List.message)
+  // Js.log(RecF.c)
+
   <ThemeContext.Provider value=ThemeContext.Dark>
     <div>
       <React.StrictMode>
@@ -51,11 +64,12 @@ let make = () => {
         //   {React.string("s")}
         // </div>
         // <StyleButton />
-        // <App1 />
-        <Counter />
+        <App1 />
+        <Counter initialCount={2} />
         <Counter1 />
         // <FriendStatus friendId="2" />
-        <TextInput />
+        // <TextInput />
+        <Input />
         // <ThemeContainer content={React.string("hello plume!")} />
         <TodoApp />
       </React.StrictMode>
